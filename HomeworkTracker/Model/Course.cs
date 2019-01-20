@@ -12,6 +12,10 @@ namespace HomeworkTracker.Model
         public IList<Task> Tasks { get; set; }
         public string Name { get; set; }
         public Priority Priority { get; set; }
-        
+
+        public Course()
+        {
+            this.Priority = Priority.Low;
+        }
     }
 }

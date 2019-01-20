@@ -48,6 +48,12 @@
     <Compile Include="CourseDataGridControl.Designer.cs">
       <DependentUpon>CourseDataGridControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CourseTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CourseTabPage.Designer.cs">
+      <DependentUpon>CourseTabPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enum\Priority.cs" />
     <Compile Include="TabControlTaskTracker.cs">
       <SubType>UserControl</SubType>

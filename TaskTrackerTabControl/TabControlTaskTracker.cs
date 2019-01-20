@@ -36,10 +36,10 @@ namespace TaskTrackerTabControl
 
         private void addTabPage(string tabLabel)
         {
-            var tabPage = new TabPage(tabLabel);
-            this.TaskTrackerTabControl.TabPages.Add(tabPage);
+            var courseTabPage = new CourseTabPage(tabLabel);
+            this.TaskTrackerTabControl.TabPages.Add(courseTabPage);
             var courseControl = new CourseControl();
-            tabPage.Controls.Add(courseControl);
+            courseTabPage.Controls.Add(courseControl);
         }
     }
 }

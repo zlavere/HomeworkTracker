@@ -15,14 +15,25 @@ namespace TaskTrackerTabControl
         public CourseControl()
         {
             InitializeComponent();
-            this.CourseDataGridView.ColumnCount = 2;
-            this.CourseDataGridView.Columns[0].Name = "isComplete";
-            this.CourseDataGridView.Columns[1].Name = "taskDescription";
-            this.CourseDataGridView.Rows.Add(new string[] {"test", "test2"});
+            this.setUp();
+        }
+
+        private void setUp()
+        {
+            var checkBoxColumn = new DataGridViewCheckBoxColumn {
+                Name = "Complete",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+            };
+            var descriptionColumn = new DataGridViewTextBoxColumn {
+                Name = "Description",
+            };
+            this.CourseDataGridView.Columns.Insert(0, checkBoxColumn);
+            this.CourseDataGridView.Columns.Insert(1, descriptionColumn);
+            this.CourseDataGridView.Rows.Add(new object[] {true, "test2"});
+            this.CourseDataGridView.Rows.Add(new object[] {false, "test3"});
             this.CourseDataGridView.Columns[0].DisplayIndex = 0;
             this.CourseDataGridView.Columns[1].DisplayIndex = 1;
             this.Dock = DockStyle.Fill;
-
         }
     }
 }
