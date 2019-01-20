@@ -1,0 +1,9 @@
+C:\homeworktracker\TaskTrackerTabControl\bin\Debug\TaskTrackerTabControl.dll
+C:\homeworktracker\TaskTrackerTabControl\bin\Debug\TaskTrackerTabControl.pdb
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.TabControlTaskTracker.resources
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.csproj.GenerateResource.cache
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.csproj.CoreCompileInputs.cache
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.dll
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.pdb
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.CourseControl.resources
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.csprojAssemblyReference.cache
