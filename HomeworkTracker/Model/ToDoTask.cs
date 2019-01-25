@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeworkTracker.Model
 {
-    public class Task
+    public class ToDoTask
     {
         public string Description { get; set; }
         public bool IsComplete { get; set; }

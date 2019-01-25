@@ -11,20 +11,22 @@ using TaskTrackerTabControl.Enum;
 
 namespace TaskTrackerTabControl
 {
-    public partial class CourseTabPage : TabPage
+    public partial class TaskGroupTabPage : TabPage
     {
         public string CourseName { get; set; }
         public Priority Priority { get; set; }
+        public TaskDataGridView TaskGridView { get; set; }
 
-        public CourseTabPage()
+        public TaskGroupTabPage()
         {
             InitializeComponent();
+            this.TaskGridView = new TaskDataGridView();
+            this.Controls.Add(this.TaskGridView);
         }
 
-        public CourseTabPage(string name) : this()
+        public TaskGroupTabPage(string name) : this()
         {
             this.Text = name;
-            this.CourseName = name;
         }
     }
 }

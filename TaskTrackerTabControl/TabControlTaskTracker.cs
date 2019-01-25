@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskTrackerTabControl.Enum;
+using TaskTrackerTabControl.Extension;
 
 // ReSharper disable ArrangeThisQualifier
 
@@ -15,15 +16,28 @@ namespace TaskTrackerTabControl
 {
     public partial class TabControlTaskTracker: UserControl
     {
+        public IList<TaskGroupTabPage> TaskGroupTabPages => this.taskTrackerTabControl.TabPages.ToTaskGroupTabPagesList();
+        public TaskGroupTabPage SelectedTab => (TaskGroupTabPage) this.taskTrackerTabControl.SelectedTab;
+        public Priority SelectedPriority
+        {
+            get
+            {
+                return (Priority) this.PriorityButtonGroup.First(selected => selected.Checked).Tag;
+            } 
+        }
+        public IEnumerable<RadioButton> PriorityButtonGroup { get; private set; }
+
+        
         public TabControlTaskTracker()
         {
             InitializeComponent();
             this.setUp();
+            this.PriorityButtonGroup = this.PriorityGroupBox.Controls.OfType<RadioButton>();
         }
 
         private void setUp()
         {
-            this.addTabPage("Test");
+            this.AddTabPage("Test");
             this.setRadioButtonTags();
         }
 
@@ -34,12 +48,11 @@ namespace TaskTrackerTabControl
             this.LowPriorityButton.Tag = Priority.Low;
         }
 
-        private void addTabPage(string tabLabel)
+        public void AddTabPage(string tabLabel)
         {
-            var courseTabPage = new CourseTabPage(tabLabel);
-            this.TaskTrackerTabControl.TabPages.Add(courseTabPage);
-            var courseControl = new CourseControl();
-            courseTabPage.Controls.Add(courseControl);
+            var courseTabPage = new TaskGroupTabPage(tabLabel);
+            this.taskTrackerTabControl.TabPages.Add(courseTabPage);
+            this.TaskGroupTabPages.Add(courseTabPage);
         }
     }
 }

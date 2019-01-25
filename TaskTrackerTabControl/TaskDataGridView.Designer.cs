@@ -1,6 +1,6 @@
 ﻿namespace TaskTrackerTabControl
 {
-    partial class CourseTabPage
+    partial class TaskDataGridView
     {
         /// <summary> 
         /// Required designer variable.

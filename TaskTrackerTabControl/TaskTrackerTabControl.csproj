@@ -42,17 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDataGridControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CourseDataGridControl.Designer.cs">
-      <DependentUpon>CourseDataGridControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CourseTabPage.cs">
+    <Compile Include="Extension\CollectionExtensions.cs" />
+    <Compile Include="TaskDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CourseTabPage.Designer.cs">
-      <DependentUpon>CourseTabPage.cs</DependentUpon>
+    <Compile Include="TaskDataGridView.Designer.cs">
+      <DependentUpon>TaskDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskGroupTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TaskGroupTabPage.Designer.cs">
+      <DependentUpon>TaskGroupTabPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Enum\Priority.cs" />
     <Compile Include="TabControlTaskTracker.cs">
@@ -65,9 +66,6 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CourseDataGridControl.resx">
-      <DependentUpon>CourseDataGridControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TabControlTaskTracker.resx">
       <DependentUpon>TabControlTaskTracker.cs</DependentUpon>
     </EmbeddedResource>
