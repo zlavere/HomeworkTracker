@@ -9,7 +9,7 @@ namespace HomeworkTracker.Model
 {
     public class Course
     {
-        public IList<ToDoTask> Tasks { get; set; }
+        public IList<TodoTask> Tasks { get; set; }
         public string Name { get; set; }
         public Priority Priority { get; set; }
 

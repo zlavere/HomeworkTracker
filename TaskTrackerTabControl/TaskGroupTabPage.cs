@@ -13,8 +13,6 @@ namespace TaskTrackerTabControl
 {
     public partial class TaskGroupTabPage : TabPage
     {
-        public string CourseName { get; set; }
-        public Priority Priority { get; set; }
         public TaskDataGridView TaskGridView { get; set; }
 
         public TaskGroupTabPage()

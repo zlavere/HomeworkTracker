@@ -54,7 +54,7 @@
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\ToDoTask.cs" />
+    <Compile Include="Model\TodoTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\MainPage.resx">

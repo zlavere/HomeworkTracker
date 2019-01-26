@@ -6,3 +6,4 @@ C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.csproj.
 C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.dll
 C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.pdb
 C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.csprojAssemblyReference.cache
+C:\homeworktracker\TaskTrackerTabControl\obj\Debug\TaskTrackerTabControl.TaskDataGridView.resources

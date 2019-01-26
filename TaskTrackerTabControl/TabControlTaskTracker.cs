@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,15 @@ namespace TaskTrackerTabControl
 {
     public partial class TabControlTaskTracker: UserControl
     {
+        public event EventHandler<TaskChangedEventArgs> TaskChanged;
+        private const int taskCompleteColumnIndex = 0;
+        private const int taskDescriptionColumnIndex = 1;
         public IList<TaskGroupTabPage> TaskGroupTabPages => this.taskTrackerTabControl.TabPages.ToTaskGroupTabPagesList();
         public TaskGroupTabPage SelectedTab => (TaskGroupTabPage) this.taskTrackerTabControl.SelectedTab;
+        public TaskDataGridView SelectedTabDataGrid => this.SelectedTab.TaskGridView;
+
+        public string testPublicProperty { get; set; }
+
         public Priority SelectedPriority
         {
             get
@@ -54,5 +62,9 @@ namespace TaskTrackerTabControl
             this.taskTrackerTabControl.TabPages.Add(courseTabPage);
             this.TaskGroupTabPages.Add(courseTabPage);
         }
+
+     
     }
+
+   
 }

@@ -1,34 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HomeworkTracker.Model;
 using HomeworkTracker.ViewModel;
+using TaskTrackerTabControl;
 
 namespace HomeworkTracker
 {
     public partial class MainPage : Form
     {
+        #region Data members
+
         private MainPageViewModel viewModel;
+
+        #endregion
+
+        #region Constructors
+
         public MainPage()
         {
+            // ReSharper disable once ArrangeThisQualifier
             InitializeComponent();
             this.setUp();
         }
 
+        #endregion
+
+        #region Methods
+
         private void setUp()
         {
             this.viewModel = new MainPageViewModel();
-            var testTask = new ToDoTask {IsComplete = true, Description = "Test ToDo"};
-            var newList = new List<ToDoTask>();
-            newList.Add(testTask);
-            this.TaskTrackerControl.TaskGroupTabPages[0].TaskGridView.TaskDataSource = newList.ToArray();
+            this.TaskTrackerControl.SelectedTabDataGrid.DataSource = this.viewModel.TasksBinding;
+            this.TaskTrackerControl.SelectedTabDataGrid.TaskChanged += this.cellEdited;
         }
+
+        private void cellEdited(object sender, TaskChangedEventArgs e)
+        {
+            var modifiedTask = new TodoTask {Description = e.Description, IsComplete = e.IsComplete};
+            this.viewModel.AddNewTask(modifiedTask, e.Index);
+        }
+
+        #endregion
+
+//        private void modifyTask(object sender, TaskChangedEventArgs e)
+//        {
+//            var modifiedTask = this.viewModel.SelectedCourse.Tasks[e.RowIndex];
+//            modifiedTask.Description = e.TaskDescription;
+//            modifiedTask.IsComplete = e.IsTaskComplete;
+//            Debug.WriteLine(this.viewModel.SelectedCourse.Tasks[e.RowIndex].Description);
+//        }
     }
 }

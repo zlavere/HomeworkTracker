@@ -38,9 +38,9 @@
             // 
             // taskTrackerTabControl
             // 
-            this.taskTrackerTabControl.Location = new System.Drawing.Point(70, 26);
+            this.taskTrackerTabControl.Location = new System.Drawing.Point(70, 27);
             this.taskTrackerTabControl.Margin = new System.Windows.Forms.Padding(2);
-            this.taskTrackerTabControl.Name = "TaskTrackerTabControl";
+            this.taskTrackerTabControl.Name = "taskTrackerTabControl";
             this.taskTrackerTabControl.SelectedIndex = 0;
             this.taskTrackerTabControl.Size = new System.Drawing.Size(528, 337);
             this.taskTrackerTabControl.TabIndex = 0;

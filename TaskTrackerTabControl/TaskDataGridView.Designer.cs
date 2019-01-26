@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // TaskDataGridView
+            // 
+            this.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.taskChanged_CellEndEdit);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
