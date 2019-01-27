@@ -101,6 +101,5 @@ namespace TaskTrackerTabControl
         public string Description { get; set; }
         public bool IsComplete { get; set; }
         public int Index { get; set; }
-
     }
 }

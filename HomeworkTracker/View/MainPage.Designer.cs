@@ -1,4 +1,4 @@
-﻿namespace HomeworkTracker
+﻿namespace HomeworkTracker.View
 {
     partial class MainPage
     {
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -56,7 +56,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.TaskTrackerControl);
             this.Name = "MainPage";
-            this.Text = "Form1";
+            this.Text = "Homework Tracker by Zach LaVere";
+            this.Load += new System.EventHandler(this.MainPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

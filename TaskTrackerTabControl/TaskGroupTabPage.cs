@@ -14,7 +14,7 @@ namespace TaskTrackerTabControl
     public partial class TaskGroupTabPage : TabPage
     {
         public TaskDataGridView TaskGridView { get; set; }
-
+        public Priority Priority { get; set; }
         public TaskGroupTabPage()
         {
             InitializeComponent();

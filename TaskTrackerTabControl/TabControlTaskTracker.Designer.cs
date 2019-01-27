@@ -44,6 +44,7 @@
             this.taskTrackerTabControl.SelectedIndex = 0;
             this.taskTrackerTabControl.Size = new System.Drawing.Size(528, 337);
             this.taskTrackerTabControl.TabIndex = 0;
+            this.taskTrackerTabControl.SelectedIndexChanged += new System.EventHandler(this.onTabSelectionChanged);
             // 
             // PriorityGroupBox
             // 
@@ -89,6 +90,7 @@
             this.HighPriorityButton.TabStop = true;
             this.HighPriorityButton.Text = "High";
             this.HighPriorityButton.UseVisualStyleBackColor = true;
+            this.HighPriorityButton.CheckedChanged += new System.EventHandler(this.onRadioButtonCheckedChange);
             // 
             // TabControlTaskTracker
             // 

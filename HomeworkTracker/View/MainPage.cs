@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using HomeworkTracker.Model;
 using HomeworkTracker.ViewModel;
 using TaskTrackerTabControl;
 
-namespace HomeworkTracker
+namespace HomeworkTracker.View
 {
     public partial class MainPage : Form
     {
@@ -20,7 +18,7 @@ namespace HomeworkTracker
         public MainPage()
         {
             // ReSharper disable once ArrangeThisQualifier
-            InitializeComponent();
+            this.InitializeComponent();
             this.setUp();
         }
 
@@ -33,6 +31,12 @@ namespace HomeworkTracker
             this.viewModel = new MainPageViewModel();
             this.TaskTrackerControl.SelectedTabDataGrid.DataSource = this.viewModel.TasksBinding;
             this.TaskTrackerControl.SelectedTabDataGrid.TaskChanged += this.cellEdited;
+            this.TaskTrackerControl.PriorityChanged += this.assignChangedPriority;
+        }
+
+        private void assignChangedPriority(object sender, PriorityChangedEventArgs e)
+        {
+            this.viewModel.SelectedCourse.Priority = e.Priority;
         }
 
         private void cellEdited(object sender, TaskChangedEventArgs e)
@@ -41,14 +45,12 @@ namespace HomeworkTracker
             this.viewModel.AddNewTask(modifiedTask, e.Index);
         }
 
+        private void MainPage_Load(object sender, System.EventArgs e)
+        {
+            
+        }
+
         #endregion
 
-//        private void modifyTask(object sender, TaskChangedEventArgs e)
-//        {
-//            var modifiedTask = this.viewModel.SelectedCourse.Tasks[e.RowIndex];
-//            modifiedTask.Description = e.TaskDescription;
-//            modifiedTask.IsComplete = e.IsTaskComplete;
-//            Debug.WriteLine(this.viewModel.SelectedCourse.Tasks[e.RowIndex].Description);
-//        }
     }
 }

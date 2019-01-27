@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskTrackerTabControl.Enum;
 using TaskTrackerTabControl.Extension;
@@ -15,33 +10,48 @@ using TaskTrackerTabControl.Extension;
 
 namespace TaskTrackerTabControl
 {
-    public partial class TabControlTaskTracker: UserControl
+    public partial class TabControlTaskTracker : UserControl
     {
-        public event EventHandler<TaskChangedEventArgs> TaskChanged;
-        private const int taskCompleteColumnIndex = 0;
-        private const int taskDescriptionColumnIndex = 1;
-        public IList<TaskGroupTabPage> TaskGroupTabPages => this.taskTrackerTabControl.TabPages.ToTaskGroupTabPagesList();
+        #region Properties
+
+        public IList<TaskGroupTabPage> TaskGroupTabPages =>
+            this.taskTrackerTabControl.TabPages.ToTaskGroupTabPagesList();
+
         public TaskGroupTabPage SelectedTab => (TaskGroupTabPage) this.taskTrackerTabControl.SelectedTab;
         public TaskDataGridView SelectedTabDataGrid => this.SelectedTab.TaskGridView;
 
-        public string testPublicProperty { get; set; }
-
         public Priority SelectedPriority
         {
-            get
+            get { return (Priority) this.PriorityButtonGroup.First(selected => selected.Checked).Tag; }
+            private set
             {
-                return (Priority) this.PriorityButtonGroup.First(selected => selected.Checked).Tag;
-            } 
-        }
-        public IEnumerable<RadioButton> PriorityButtonGroup { get; private set; }
+                if (!System.Enum.IsDefined(typeof(Priority), value))
+                {
+                    throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(Priority));
+                }
 
-        
+                this.SelectedPriority = value;
+            }
+        }
+
+        public IEnumerable<RadioButton> PriorityButtonGroup { get; }
+
+        #endregion
+
+        #region Constructors
+
         public TabControlTaskTracker()
         {
             InitializeComponent();
             this.setUp();
             this.PriorityButtonGroup = this.PriorityGroupBox.Controls.OfType<RadioButton>();
         }
+
+        #endregion
+
+        #region Methods
+
+        public event EventHandler<PriorityChangedEventArgs> PriorityChanged;
 
         private void setUp()
         {
@@ -63,8 +73,32 @@ namespace TaskTrackerTabControl
             this.TaskGroupTabPages.Add(courseTabPage);
         }
 
-     
+        private void onRadioButtonCheckedChange(object sender, EventArgs e)
+        {
+            //TODO change current tab background
+            var priorityData = new PriorityChangedEventArgs {
+                Priority = this.SelectedPriority
+            };
+            
+            this.PriorityChanged?.Invoke(this, priorityData);
+        }
+
+        private void onTabSelectionChanged(object sender, EventArgs e)
+        {
+            this.SelectedPriority = this.SelectedTab.Priority;
+        }
+
+        #endregion
+
+        //TODO Set the Tag of the page to be an ID for the course! EZPZ
     }
 
-   
+    public class PriorityChangedEventArgs
+    {
+        #region Properties
+
+        public Priority Priority { get; set; }
+
+        #endregion
+    }
 }
