@@ -20,6 +20,7 @@ namespace TaskTrackerTabControl
             InitializeComponent();
             this.TaskGridView = new TaskDataGridView();
             this.Controls.Add(this.TaskGridView);
+            
         }
 
         public TaskGroupTabPage(string name) : this()
