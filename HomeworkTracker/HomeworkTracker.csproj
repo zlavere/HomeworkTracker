@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,7 +54,7 @@
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\Task.cs" />
+    <Compile Include="Model\TodoTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\MainPage.resx">
@@ -87,5 +88,6 @@
       <Name>TaskTrackerTabControl</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

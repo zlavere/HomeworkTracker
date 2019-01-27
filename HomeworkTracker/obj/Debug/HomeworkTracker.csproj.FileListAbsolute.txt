@@ -4,10 +4,10 @@ C:\homeworktracker\HomeworkTracker\bin\Debug\HomeworkTracker.pdb
 C:\homeworktracker\HomeworkTracker\bin\Debug\TaskTrackerTabControl.dll
 C:\homeworktracker\HomeworkTracker\bin\Debug\TaskTrackerTabControl.pdb
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.csprojAssemblyReference.cache
+C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.View.MainPage.resources
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.Properties.Resources.resources
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.csproj.GenerateResource.cache
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.csproj.CoreCompileInputs.cache
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.csproj.CopyComplete
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.exe
 C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.pdb
-C:\homeworktracker\HomeworkTracker\obj\Debug\HomeworkTracker.MainPage.resources
