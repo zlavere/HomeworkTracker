@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCourse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Course>
+    <Tasks>
+      <Description>Do Readings on XML Serialization</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Tasks>
+      <Description>Test</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Name>CS4280</Name>
+    <Priority>Medium</Priority>
+  </Course>
+  <Course>
+    <Tasks>
+      <Description>Do Readings on JSON Serialization</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Tasks>
+      <Description>Test5</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Name>CS3202</Name>
+    <Priority>Low</Priority>
+  </Course>
+  <Course>
+    <Tasks>
+      <Description>This works well?</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Tasks>
+      <Description>Do readings on XML Deserialization</Description>
+      <IsComplete>false</IsComplete>
+    </Tasks>
+    <Name>CS3280</Name>
+    <Priority>Low</Priority>
+  </Course>
+</ArrayOfCourse>

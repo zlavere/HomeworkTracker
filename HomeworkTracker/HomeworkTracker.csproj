@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension\CollectionExtensions.cs" />
+    <Compile Include="IO\XmlFileReader.cs" />
+    <Compile Include="IO\XmlFileWriter.cs" />
+    <Compile Include="Model\CourseCollection.cs" />
+    <Compile Include="Model\TodoTaskCollection.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\MainPage.cs">
       <SubType>Form</SubType>
@@ -88,6 +93,8 @@
       <Name>TaskTrackerTabControl</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

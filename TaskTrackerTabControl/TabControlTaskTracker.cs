@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,6 +14,7 @@ namespace TaskTrackerTabControl
     {
         #region Properties
 
+        private Priority selectedPriority;
         public IList<TaskGroupTabPage> TaskGroupTabPages =>
             this.taskTrackerTabControl.TabPages.ToTaskGroupTabPagesList();
 
@@ -26,10 +25,17 @@ namespace TaskTrackerTabControl
         {
             get
             {
-                var checkedPriorityButton = this.PriorityButtonGroup.First(selected => selected.Checked) ?? this.LowPriorityButton;
-                var selectedPriority = this.checkIfNoneSelected(checkedPriorityButton);
-                return selectedPriority;
+                var checkedPriorityButton = this.PriorityButtonGroup.First(selected => selected.Checked) ??
+                                            this.LowPriorityButton;
+                this.selectedPriority = this.checkIfNoneSelected(checkedPriorityButton);
+                return this.selectedPriority;
             }
+            set => this.selectedPriority = value;
+        }
+
+        private void checkSelectedPriorityRadioButton(Priority priority)
+        {
+            this.PriorityButtonGroup.First(button => (Priority) button.Tag == priority).Checked = true;
         }
 
         public IEnumerable<RadioButton> PriorityButtonGroup { get; private set; }
@@ -41,7 +47,7 @@ namespace TaskTrackerTabControl
         public TabControlTaskTracker()
         {
             InitializeComponent();
-            
+
             this.setUp();
         }
 
@@ -62,10 +68,9 @@ namespace TaskTrackerTabControl
         }
 
         public event EventHandler<PriorityChangedEventArgs> PriorityChanged;
-
+        public event EventHandler<TabSelectionChangedEventArgs> TabSelectionChanged; 
         private void setUp()
         {
-            this.AddTabPage("Test");
             this.setRadioButtonTags();
             this.PriorityButtonGroup = this.PriorityGroupBox.Controls.OfType<RadioButton>();
             this.taskTrackerTabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
@@ -78,11 +83,12 @@ namespace TaskTrackerTabControl
             this.LowPriorityButton.Tag = Priority.Low;
         }
 
-        public void AddTabPage(string tabLabel)
+        public void AddTabPage(string tabLabel, Priority priority)
         {
-            var courseTabPage = new TaskGroupTabPage(tabLabel);
+            var courseTabPage = new TaskGroupTabPage(tabLabel) {Priority = priority};
             this.taskTrackerTabControl.TabPages.Add(courseTabPage);
             this.TaskGroupTabPages.Add(courseTabPage);
+            this.refreshTabControl();
         }
 
         private void onRadioButtonCheckedChange(object sender, EventArgs e)
@@ -91,18 +97,20 @@ namespace TaskTrackerTabControl
             var priorityData = new PriorityChangedEventArgs {
                 Priority = this.SelectedPriority
             };
-            Debug.WriteLine("priority changed");
+            this.SelectedTab.Priority = this.SelectedPriority;
             this.refreshTabControl();
             this.PriorityChanged?.Invoke(this, priorityData);
-
         }
 
-
-
+        
         private void onTabSelectionChanged(object sender, EventArgs e)
         {
-            this.SelectedTab.Priority = this.SelectedPriority;
-            
+            this.SelectedPriority = this.SelectedTab.Priority;
+            this.checkSelectedPriorityRadioButton(this.SelectedTab.Priority);
+            this.refreshTabControl();
+            var selectionChangedArgs = new TabSelectionChangedEventArgs
+                {Index = this.taskTrackerTabControl.SelectedIndex, TaskDataGridView = this.SelectedTab.TaskGridView};
+            this.TabSelectionChanged?.Invoke(this, selectionChangedArgs);
         }
 
         private void onTabDraw_DrawItem(object sender, DrawItemEventArgs e)
@@ -112,28 +120,24 @@ namespace TaskTrackerTabControl
 
         private void changeTabColorOnPriority(DrawItemEventArgs args)
         {
-            var backColor = SystemColors.Control;
-            var foreColor = SystemBrushes.ControlText;
-            if (this.SelectedPriority == Priority.Medium)
-            {
-                backColor = Color.Gold;
-            }
-            else if (this.SelectedPriority == Priority.High)
-            {
-                backColor = Color.DarkRed;
-                foreColor = SystemBrushes.HighlightText;
-            }
-            Rectangle paddedBounds = args.Bounds;
-            paddedBounds.Inflate(-2, -2);
-            args.Graphics.FillRectangle(new SolidBrush(backColor), args.Bounds);
-            args.Graphics.DrawString(this.taskTrackerTabControl.TabPages[args.Index].Text, this.Font, foreColor, paddedBounds);
-            this.taskTrackerTabControl.SelectedTab.Invalidate();
-            this.taskTrackerTabControl.SelectedTab.Update();
+                var backColor = SystemColors.Control;
+                var foreColor = SystemBrushes.ControlText;
+                if (this.TaskGroupTabPages[args.Index].Priority == Priority.Medium)
+                {
+                    backColor = Color.Gold;
+                }
+                else if (this.TaskGroupTabPages[args.Index].Priority == Priority.High)
+                {
+                    backColor = Color.DarkRed;
+                    foreColor = SystemBrushes.HighlightText;
+                }
+                args.Graphics.FillRectangle(new SolidBrush(backColor), args.Bounds);
+                var paddedBounds = args.Bounds;
+                args.Graphics.DrawString(this.taskTrackerTabControl.TabPages[args.Index].Text, this.Font, foreColor, paddedBounds);
         }
 
         private void setDefaultPriority_Load(object sender, EventArgs e)
         {
-            this.LowPriorityButton.Checked = true;
         }
 
         private void refreshTabControl()
@@ -143,14 +147,21 @@ namespace TaskTrackerTabControl
         }
 
         #endregion
+
     }
 
-    public class PriorityChangedEventArgs
+    public class PriorityChangedEventArgs:EventArgs
     {
         #region Properties
 
         public Priority Priority { get; set; }
 
         #endregion
+    }
+
+    public class TabSelectionChangedEventArgs:EventArgs
+    {
+        public int Index { get; set; }
+        public TaskDataGridView TaskDataGridView { get; set; }
     }
 }

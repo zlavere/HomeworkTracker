@@ -39,11 +39,11 @@
             // taskTrackerTabControl
             // 
             this.taskTrackerTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.taskTrackerTabControl.Location = new System.Drawing.Point(115, 33);
+            this.taskTrackerTabControl.Location = new System.Drawing.Point(87, 3);
             this.taskTrackerTabControl.Margin = new System.Windows.Forms.Padding(2);
             this.taskTrackerTabControl.Name = "taskTrackerTabControl";
             this.taskTrackerTabControl.SelectedIndex = 0;
-            this.taskTrackerTabControl.Size = new System.Drawing.Size(555, 353);
+            this.taskTrackerTabControl.Size = new System.Drawing.Size(566, 353);
             this.taskTrackerTabControl.TabIndex = 0;
             this.taskTrackerTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.onTabDraw_DrawItem);
             this.taskTrackerTabControl.SelectedIndexChanged += new System.EventHandler(this.onTabSelectionChanged);
@@ -53,9 +53,9 @@
             this.PriorityGroupBox.Controls.Add(this.LowPriorityButton);
             this.PriorityGroupBox.Controls.Add(this.MediumPriorityButton);
             this.PriorityGroupBox.Controls.Add(this.HighPriorityButton);
-            this.PriorityGroupBox.Location = new System.Drawing.Point(3, 48);
+            this.PriorityGroupBox.Location = new System.Drawing.Point(3, 3);
             this.PriorityGroupBox.Name = "PriorityGroupBox";
-            this.PriorityGroupBox.Size = new System.Drawing.Size(107, 131);
+            this.PriorityGroupBox.Size = new System.Drawing.Size(79, 85);
             this.PriorityGroupBox.TabIndex = 1;
             this.PriorityGroupBox.TabStop = false;
             this.PriorityGroupBox.Text = "Priority";
@@ -64,7 +64,7 @@
             // 
             this.LowPriorityButton.AllowDrop = true;
             this.LowPriorityButton.AutoSize = true;
-            this.LowPriorityButton.Location = new System.Drawing.Point(18, 85);
+            this.LowPriorityButton.Location = new System.Drawing.Point(6, 65);
             this.LowPriorityButton.Name = "LowPriorityButton";
             this.LowPriorityButton.Size = new System.Drawing.Size(45, 17);
             this.LowPriorityButton.TabIndex = 2;
@@ -75,7 +75,7 @@
             // MediumPriorityButton
             // 
             this.MediumPriorityButton.AutoSize = true;
-            this.MediumPriorityButton.Location = new System.Drawing.Point(18, 62);
+            this.MediumPriorityButton.Location = new System.Drawing.Point(6, 42);
             this.MediumPriorityButton.Name = "MediumPriorityButton";
             this.MediumPriorityButton.Size = new System.Drawing.Size(62, 17);
             this.MediumPriorityButton.TabIndex = 1;
@@ -87,7 +87,7 @@
             // HighPriorityButton
             // 
             this.HighPriorityButton.AutoSize = true;
-            this.HighPriorityButton.Location = new System.Drawing.Point(18, 39);
+            this.HighPriorityButton.Location = new System.Drawing.Point(6, 19);
             this.HighPriorityButton.Name = "HighPriorityButton";
             this.HighPriorityButton.Size = new System.Drawing.Size(47, 17);
             this.HighPriorityButton.TabIndex = 0;
@@ -104,7 +104,7 @@
             this.Controls.Add(this.taskTrackerTabControl);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TabControlTaskTracker";
-            this.Size = new System.Drawing.Size(680, 393);
+            this.Size = new System.Drawing.Size(655, 371);
             this.Load += new System.EventHandler(this.setDefaultPriority_Load);
             this.PriorityGroupBox.ResumeLayout(false);
             this.PriorityGroupBox.PerformLayout();

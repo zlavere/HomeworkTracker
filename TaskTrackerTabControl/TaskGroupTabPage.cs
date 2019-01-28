@@ -20,12 +20,18 @@ namespace TaskTrackerTabControl
             InitializeComponent();
             this.TaskGridView = new TaskDataGridView();
             this.Controls.Add(this.TaskGridView);
-            
+            this.UseVisualStyleBackColor = false;
         }
 
         public TaskGroupTabPage(string name) : this()
         {
             this.Text = name;
         }
+
+        public void changeTabColor()
+        {
+            this.BackColor = Color.Aquamarine;
+        }
+        
     }
 }
